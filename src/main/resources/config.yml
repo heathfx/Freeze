@@ -5,7 +5,16 @@ prevent-movement: true
 prevent-teleport: true
 
 # Should players be prevented from executing commands while frozen?
-prevent-commands: true
+prevent-commands: false
+
+# prevent breaking blocks
+prevent-break: true
+
+# prevent interact/use
+prevent-interact: true
+
+# prevent damaging frozen player and prevent frozen player from doing damage
+prevent-damage: true
 
 # This is a list of commands that will be prevented
 # This list uses the String.startsWith method
