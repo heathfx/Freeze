@@ -11,7 +11,11 @@ import com.github.sirblobman.api.update.UpdateManager;
 import com.github.sirblobman.freeze.command.CommandFreeze;
 import com.github.sirblobman.freeze.command.CommandFreezeAll;
 import com.github.sirblobman.freeze.command.CommandFreezeReload;
+import com.github.sirblobman.freeze.listener.ListenerBlockBreak;
 import com.github.sirblobman.freeze.listener.ListenerCommand;
+import com.github.sirblobman.freeze.listener.ListenerEntityDamage;
+import com.github.sirblobman.freeze.listener.ListenerEntityDamageEntity;
+import com.github.sirblobman.freeze.listener.ListenerInteract;
 import com.github.sirblobman.freeze.listener.ListenerMove;
 import com.github.sirblobman.freeze.listener.ListenerTeleport;
 import com.github.sirblobman.freeze.manager.FreezeManager;
@@ -73,5 +77,9 @@ public final class FreezePlugin extends ConfigurablePlugin {
         new ListenerMove(this).register();
         new ListenerTeleport(this).register();
         new ListenerCommand(this).register();
+        new ListenerBlockBreak(this).register();
+        new ListenerEntityDamageEntity(this).register();
+        new ListenerEntityDamage(this).register();
+        new ListenerInteract(this).register();
     }
 }

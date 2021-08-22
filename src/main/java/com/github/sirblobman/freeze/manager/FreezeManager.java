@@ -1,6 +1,5 @@
 package com.github.sirblobman.freeze.manager;
 
-import com.github.sirblobman.api.configuration.ConfigurationManager;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -29,9 +28,9 @@ public final class FreezeManager {
     public void setFreezeAll(boolean freezeAll) {
         this.allFrozen = freezeAll;
         //update persistent config option - heathfx
-        ConfigurationManager configurationManager = getPlugin().getConfigurationManager();
-        YamlConfiguration configuration = configurationManager.get("config.yml");
+        YamlConfiguration configuration = getPlugin().getConfig();
         configuration.set("freeze-all", freezeAll);
+        getPlugin().saveConfig();
     }
     
     //add getter for freeze all - heathfx
