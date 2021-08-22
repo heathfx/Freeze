@@ -23,7 +23,7 @@
         <bukkit.plugin.description>${project.description}</bukkit.plugin.description>
 
         <bukkit.plugin.main>com.github.sirblobman.freeze.FreezePlugin</bukkit.plugin.main>
-        <bukkit.plugin.version>2.2.1</bukkit.plugin.version>
+        <bukkit.plugin.version>2.3.0-SNAPSHOT</bukkit.plugin.version>
     </properties>
 
     <repositories>

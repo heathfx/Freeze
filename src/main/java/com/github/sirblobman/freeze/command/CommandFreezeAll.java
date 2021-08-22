@@ -37,28 +37,19 @@ public final class CommandFreezeAll extends Command {
 
     @Override
     protected boolean execute(CommandSender sender, String[] args) {
-        Collection<? extends Player> onlinePlayerCollection = Bukkit.getOnlinePlayers();
-        int freezeCount = 0;
-
-        for(Player target : onlinePlayerCollection) {
-            boolean freeze = freeze(target);
-            if(freeze) freezeCount++;
-        }
-
-        String amountString = Integer.toString(freezeCount);
-        Replacer replacer = message -> message.replace("{amount}", amountString);
+        //change freeze-all to a persistent toggle - heathfx
+        FreezeManager freezeManager = plugin.getFreezeManager();
+        
+        
+        freezeManager.setFreezeAll(!freezeManager.getFreezeAll());
+        
 
         LanguageManager languageManager = getLanguageManager();
-        languageManager.sendMessage(sender, "freeze-all", replacer, true);
-        return true;
-    }
-
-    private boolean freeze(Player target) {
-        FreezeManager freezeManager = this.plugin.getFreezeManager();
-        if(freezeManager.isFrozen(target)) return false;
-        if(target.hasPermission("freeze.immune")) return false;
-
-        freezeManager.setFrozen(target, true);
+        if(freezeManager.getFreezeAll()) {
+            languageManager.sendMessage(sender, "freeze-all", null, true);
+        } else {
+            languageManager.sendMessage(sender, "un-freeze-all", null, true);
+        }
         return true;
     }
 }
