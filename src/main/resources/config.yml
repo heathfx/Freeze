@@ -21,3 +21,6 @@ blocked-command-list:
 # This list also uses String.startsWith
 allowed-command-list:
   - "/tpahere"
+
+#remember freeze-all across restarts
+freeze-all: false

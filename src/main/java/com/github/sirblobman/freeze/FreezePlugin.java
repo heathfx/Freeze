@@ -15,6 +15,7 @@ import com.github.sirblobman.freeze.listener.ListenerCommand;
 import com.github.sirblobman.freeze.listener.ListenerMove;
 import com.github.sirblobman.freeze.listener.ListenerTeleport;
 import com.github.sirblobman.freeze.manager.FreezeManager;
+import org.bukkit.configuration.file.YamlConfiguration;
 
 public final class FreezePlugin extends ConfigurablePlugin {
     private final FreezeManager freezeManager;
@@ -41,6 +42,13 @@ public final class FreezePlugin extends ConfigurablePlugin {
         CorePlugin corePlugin = JavaPlugin.getPlugin(CorePlugin.class);
         UpdateManager updateManager = corePlugin.getUpdateManager();
         updateManager.addResource(this, 31822L);
+        
+        //get freeze-all state from config - heathfx
+        ConfigurationManager configurationManager = this.getConfigurationManager();
+        YamlConfiguration configuration = configurationManager.get("config.yml");
+        
+        FreezeManager freezeManager = getFreezeManager();
+        freezeManager.setFreezeAll(configuration.getBoolean("freeze-all", false));
     }
 
     @Override
