@@ -23,7 +23,7 @@ public final class ListenerEntityDamageEntity extends FreezeListener {
                 if (freezeManager.isFrozen(p)) {
                     e.setCancelled(true);
                     sendFrozenMessage(p);
-                } else if (freezeManager.isFrozen((Player) e.getEntity())) {
+                } else if (e.getEntity() instanceof Player && freezeManager.isFrozen((Player) e.getEntity())) {
                     e.setCancelled(true);
                 }
             } else if (e.getEntity() instanceof Player) {
